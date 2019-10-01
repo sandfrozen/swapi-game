@@ -1,14 +1,19 @@
 import React from "react"
 import ReactDOM from "react-dom"
-
-import "./styles.css"
-import GameBox from "./Components/GameBox"
 import { GameContextProvider } from "./GameContext/GameContext"
+import GameSettings from "./Components/GameSettings/GameSettings"
+import GameInfo from "./Components/GameInfo/GameInfo"
+import GameBoard from "./Components/GameBoard/GameBoard"
+import { GameContainer } from "./index.styled"
 
 function App() {
   return (
     <GameContextProvider>
-      <GameBox />
+      <GameContainer>
+        <GameSettings />
+        <GameInfo />
+        <GameBoard />
+      </GameContainer>
     </GameContextProvider>
   )
 }
