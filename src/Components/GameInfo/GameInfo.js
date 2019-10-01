@@ -1,5 +1,7 @@
 import React from "react"
 import { GameContextConsumer } from "../../GameContext/GameContext"
+import GameButton from "../GameButton/GameButton"
+import "./GameInfo.scss"
 
 export default function({ id }) {
   return (
@@ -7,16 +9,14 @@ export default function({ id }) {
       {({ players, lastWinner, setNewGame }) => {
         const cards = players[0].card && players[1].card
         const winner =
-          lastWinner === 0
-            ? "Player 1 won!"
-            : lastWinner === 1
-            ? "Player 2 won!"
+          lastWinner > -1
+            ? `${players[lastWinner].name} won!`
             : "Draw!"
         return (
-          <div>
-            <div>{cards && winner}</div>
-            {cards && <button onClick={setNewGame}>New game</button>}
-            {!cards && <div>Waiting for players.</div>}
+          <div className='game__info__container'>
+            {cards && <div className='game__winner'>{winner}</div>}
+            {cards && <GameButton title={"New Game"} onClick={setNewGame}/>}
+            {!cards && <div className='get__new__card'>Take a new Card!</div>}
           </div>
         )
       }}

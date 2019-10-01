@@ -1,0 +1,31 @@
+@import '../../colors';
+
+.game__info__container {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: auto;
+  height: 160px;
+  font-size: 2rem;
+}
+
+.game__winner {
+  font-weight: bold;
+  font-size: 2.3rem;
+  color: $active-color;
+}
+
+@keyframes highlighting {
+  0%, 80% {
+    color: $primary-color;
+  }
+  100% {
+    color: $active-color;
+  }
+}
+
+.get__new__card {
+  animation: highlighting infinite alternate 2s ease-in;
+}

@@ -1,0 +1,9 @@
+.game__board {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 50px;
+}
+
+.player__container {
+  //border: 1px solid green;
+}

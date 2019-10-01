@@ -1,0 +1,39 @@
+@import '../../colors';
+
+.player__box {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+
+  margin: 8px 8px 0 8px;
+  padding: 16px;
+  padding-bottom: 0;
+
+  border: 8px solid slategray;
+  background-color: slategray;
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
+}
+
+.player__label {
+  font-size: 0.6rem;
+  color: $primary-color;
+}
+
+.player__name__input {
+  position: relative;
+  color: $active-color;
+  border: none;
+  background-color: transparent;
+  font-size: 1.2rem;
+  font-weight: bold;
+  left: -2px;
+
+  transition: .3s ease-in-out;
+  &:focus {
+    outline: none;
+    background-color: $background-color;
+    color: $primary-color;
+    border-radius: 4px;
+  }
+}

@@ -4,12 +4,12 @@ import { GameContextProvider } from "./GameContext/GameContext"
 import GameSettings from "./Components/GameSettings/GameSettings"
 import GameInfo from "./Components/GameInfo/GameInfo"
 import GameBoard from "./Components/GameBoard/GameBoard"
-import "./styles.scss"
+import "./index.scss"
 
 function App() {
   return (
     <GameContextProvider>
-      <div>
+      <div className="app__container">
         <GameSettings />
         <GameInfo />
         <GameBoard />
