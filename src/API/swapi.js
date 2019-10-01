@@ -1,8 +1,15 @@
 const getResource = async resourceName => {
-  const max = resourceName === "people" ? 88 : 36
-  const id = getRandomIntInclusive(1, max)
-  const url = `https://swapi.co/api/${resourceName}/${id}/?format=json`
-  const response = await fetch(url)
+  const max = resourceName === "people" ? 88 : 37
+  let status = 0
+  let response
+  while (status !== 200) {
+    const id = getRandomIntInclusive(1, max)
+    const url = `https://swapi.co/api/${resourceName}/${id}/?format=json`
+    response = await fetch(url)
+    status = response.status
+    console.log("ask for", id, status)
+  }
+
   const resource = await response.json()
   return resource
 }

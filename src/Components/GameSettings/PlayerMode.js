@@ -4,8 +4,11 @@ import { GameContextConsumer } from "../../GameContext/GameContext"
 export default function() {
   return (
     <GameContextConsumer>
-      {({ singleplayer }) => (
-        <p>Player mode: {singleplayer ? "singleplayer" : "multiplayer"}</p>
+      {({ singleplayer, changeSingleplayer }) => (
+        <p>
+          Player mode: {singleplayer ? "singleplayer" : "multiplayer"}{" "}
+          <button onClick={changeSingleplayer}>change</button>
+        </p>
       )}
     </GameContextConsumer>
   )

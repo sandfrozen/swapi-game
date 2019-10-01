@@ -25,6 +25,7 @@ export class GameContextProvider extends React.Component {
   getNewCardFor = async playerIndex => {
     let { players, singleplayer, gameMode } = this.state
 
+    //if singleplayer get resource for Player 2
     if (playerIndex === 0 && singleplayer) {
       players[1].card = await getResource(gameMode)
     }
@@ -67,6 +68,18 @@ export class GameContextProvider extends React.Component {
     this.setState({ players })
   }
 
+  changeGameMode = () => {
+    this.setState({
+      gameMode: this.state.gameMode === "people" ? "starships" : "people"
+    })
+  }
+
+  changeSingleplayer = () => {
+    this.setState({
+      singleplayer: !this.state.singleplayer
+    })
+  }
+
   render() {
     return (
       <GameContext.Provider
@@ -76,7 +89,9 @@ export class GameContextProvider extends React.Component {
           singleplayer: this.state.singleplayer,
           lastWinner: this.state.lastWinner,
           getNewCardFor: this.getNewCardFor,
-          setNewGame: this.setNewGame
+          setNewGame: this.setNewGame,
+          changeGameMode: this.changeGameMode,
+          changeSingleplayer: this.changeSingleplayer
         }}
       >
         {this.props.children}
