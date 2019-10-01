@@ -6,9 +6,9 @@ import Card from "../Card/Card"
 export default function({ id }) {
   return (
     <div>
+      <p>Player:</p>
       <PlayerName id={id} />
       <PlayerScore id={id} />
-      <Card id={id} />
     </div>
   )
 }

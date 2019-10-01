@@ -1,5 +1,10 @@
 import React from "react"
+import { GameContextConsumer } from "../../GameContext/GameContext"
 
 export default function({ id }) {
-  return <div>Name: Player {id}</div>
+  return (
+    <GameContextConsumer>
+      {({ players }) => <p>Name: {players[id].name}</p>}
+    </GameContextConsumer>
+  )
 }
