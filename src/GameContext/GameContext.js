@@ -1,4 +1,5 @@
 import React from "react"
+import getResource from "../API/swapi"
 
 const GameContext = React.createContext()
 
@@ -16,37 +17,39 @@ export class GameContextProvider extends React.Component {
         card: null
       }
     ],
-    gameMode: "People",
+    gameMode: "people",
     singleplayer: true,
     lastWinner: -1
   }
 
-  getNewCardFor = playerIndex => {
-    let { players, singleplayer } = this.state
+  getNewCardFor = async playerIndex => {
+    let { players, singleplayer, gameMode } = this.state
+
     if (playerIndex === 0 && singleplayer) {
-      players[1].card = {}
+      players[1].card = await getResource(gameMode)
     }
-    setTimeout(() => {
-      players[playerIndex].card = {}
-      this.setState({ players })
-      this.getWinner()
-    }, 1500)
+    players[playerIndex].card = await getResource(gameMode)
+    this.setState({ players })
+    this.getWinner()
   }
 
   getWinner = () => {
     const { players, gameMode } = this.state
     const card1 = players[0].card
     const card2 = players[1].card
-    const attr = gameMode === "People" ? "mass" : "crew"
+    const attr = gameMode === "people" ? "mass" : "crew"
 
     if (card1 && card2) {
-      if (card1[attr] > card2[attr]) {
+      const attr1 = parseInt(card1[attr], 10) || 0
+      const attr2 = parseInt(card2[attr], 10) || 0
+      console.log(attr1, attr2)
+
+      if (attr1 > attr2) {
         this.addPointFor(0)
-      } else if (card1[attr] > card2[attr]) {
+      } else if (attr1 < attr2) {
         this.addPointFor(1)
       } else {
-        // this.addPointFor(0)
-        // this.addPointFor(1)
+        this.setState({ lastWinner: -1 })
       }
     }
   }

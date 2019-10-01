@@ -1,5 +1,5 @@
 import React from "react"
 
 export default function({ card }) {
-  return <div>{JSON.stringify(card)}</div>
+  return <div>{card.mass}</div>
 }

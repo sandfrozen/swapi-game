@@ -5,7 +5,7 @@ export default function() {
   return (
     <GameContextConsumer>
       {({ singleplayer }) => (
-        <p>Player mode: {singleplayer ? "Singleplayer" : "Multiplayer"}</p>
+        <p>Player mode: {singleplayer ? "singleplayer" : "multiplayer"}</p>
       )}
     </GameContextConsumer>
   )

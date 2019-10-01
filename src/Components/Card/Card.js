@@ -14,7 +14,6 @@ export default function({ id }) {
       {({ gameMode, lastWinner, singleplayer, players, getNewCardFor }) => {
         const card = players[id].card
         const opponentIsReady = players[id ? 0 : 1].card !== null
-        console.log("card", id, card)
         if (!card) {
           return (
             <div>
@@ -31,7 +30,7 @@ export default function({ id }) {
         } else {
           return (
             <Card winner={lastWinner === id}>
-              {gameMode === "People" ? (
+              {gameMode === "people" ? (
                 <CardPerson card={card} />
               ) : (
                 <CardSpaceship card={card} />
