@@ -7,7 +7,7 @@ const getResource = async resourceName => {
     const url = `https://swapi.co/api/${resourceName}/${id}/?format=json`
     response = await fetch(url)
     status = response.status
-    console.log("ask for", id, status)
+    // console.log("ask for", id, status)
   }
 
   const resource = await response.json()

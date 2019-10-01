@@ -14,8 +14,7 @@ export default function({ id }) {
             : "Draw!"
         return (
           <div>
-            <h1>Info</h1>
-            <h3>{cards && winner}</h3>
+            <div>{cards && winner}</div>
             {cards && <button onClick={setNewGame}>New game</button>}
             {!cards && <div>Waiting for players.</div>}
           </div>

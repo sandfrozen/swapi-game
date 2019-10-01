@@ -1,13 +1,19 @@
 import React from "react"
-import GameMode from "./GameMode"
-import PlayerMode from "./PlayerMode"
+import { GameContextConsumer } from "../../GameContext/GameContext"
+import GameButton from "../GameButton/GameButton"
 
 export default function() {
   return (
-    <div>
-      <h1>Settings</h1>
-      <GameMode />
-      <PlayerMode />
-    </div>
+    <GameContextConsumer>
+      {({ gameMode, changeGameMode, singleplayer, changeSingleplayer }) => {
+        const playerMode = singleplayer ? "Singleplayer" : "Multiplayer"
+        return (
+          <div>
+            <GameButton title={gameMode} onClick={changeGameMode} />
+            <GameButton title={playerMode} onClick={changeSingleplayer} />
+          </div>
+        )
+      }}
+    </GameContextConsumer>
   )
 }

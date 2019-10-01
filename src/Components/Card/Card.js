@@ -2,11 +2,6 @@ import React from "react"
 import CardPerson from "./CardPerson"
 import CardSpaceship from "./CardSpaceship"
 import { GameContextConsumer } from "../../GameContext/GameContext"
-import styled from "styled-components"
-
-const Card = styled.div`
-  border: 1px solid ${props => (props.winner ? "gold" : "black")};
-`
 
 export default function({ id }) {
   return (
@@ -29,13 +24,13 @@ export default function({ id }) {
           return <div>?</div>
         } else {
           return (
-            <Card winner={lastWinner === id}>
+            <div>
               {gameMode === "people" ? (
                 <CardPerson card={card} />
               ) : (
                 <CardSpaceship card={card} />
               )}
-            </Card>
+            </div>
           )
         }
       }}

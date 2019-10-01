@@ -43,7 +43,7 @@ export class GameContextProvider extends React.Component {
     if (card1 && card2) {
       const attr1 = parseInt(card1[attr], 10) || 0
       const attr2 = parseInt(card2[attr], 10) || 0
-      console.log(attr1, attr2)
+      // console.log(attr1, attr2)
 
       if (attr1 > attr2) {
         this.addPointFor(0)
