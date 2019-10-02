@@ -3,7 +3,7 @@ import { GameContextConsumer } from "../../GameContext/GameContext"
 import GameButton from "../GameButton/GameButton"
 import "./GameInfo.scss"
 
-export default function({ id }) {
+export default function() {
   return (
     <GameContextConsumer>
       {({ players, lastWinner, setNewGame }) => {

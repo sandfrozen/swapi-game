@@ -2,10 +2,10 @@ import React from "react"
 
 export default function({ card }) {
   let keys = Object.keys(card)
-  const details = keys.map(key => {
+  const details = keys.map((key, i) => {
     let value = card[key]
-    console.log(key, value)
-    return (<div>{key}: {value}</div>)
+    // console.log(key, value)
+    return (<div key={i}>{key}: {value}</div>)
   })
   
   return (

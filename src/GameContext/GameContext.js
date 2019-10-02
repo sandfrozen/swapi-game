@@ -23,7 +23,6 @@ export class GameContextProvider extends React.Component {
   }
   
   getNewCardFor = async playerIndex => {
-    console.log('getNewCardFor')
     let { players, singleplayer, gameMode } = this.state
     
     //if singleplayer get resource for Player 2

@@ -11,6 +11,9 @@
     "react-scripts": "3.0.1"
   },
   "devDependencies": {
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "sinon": "^7.5.0",
     "typescript": "3.3.3"
   },
   "scripts": {

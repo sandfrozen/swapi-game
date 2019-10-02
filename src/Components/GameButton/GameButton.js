@@ -3,9 +3,9 @@ import "./GameButton.scss"
 
 export default function({ label, title, onClick }) {
   return (
-    <span>
+    <div>
       {label && <div className='game__button__label'>{label}</div>}
-      <button className='game__button' onClick={onClick}>{title}</button>
-    </span>
+      <button className='game__button' onClick={onClick}>{title || 'Button'}</button>
+    </div>
   )
 }
