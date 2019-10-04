@@ -1,7 +1,7 @@
 import React from "react"
 import getResource from "../API/swapi"
 
-const GameContext = React.createContext()
+export const GameContext = React.createContext({})
 
 export class GameContextProvider extends React.Component {
   state = {
@@ -106,5 +106,3 @@ export class GameContextProvider extends React.Component {
     )
   }
 }
-
-export const GameContextConsumer = GameContext.Consumer

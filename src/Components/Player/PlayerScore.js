@@ -1,10 +1,11 @@
-import React from "react"
-import { GameContextConsumer } from "../../GameContext/GameContext"
+import React, { useContext } from "react"
+import { GameContext } from "../../GameContext/GameContext"
 
 export default function({ id }) {
+  
+  const { players } = useContext(GameContext)
+  
   return (
-    <GameContextConsumer>
-      {({ players }) => <div>{players[id].score}</div>}
-    </GameContextConsumer>
+    <div>{players[id].score}</div>
   )
 }

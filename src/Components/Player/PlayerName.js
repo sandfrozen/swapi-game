@@ -1,10 +1,11 @@
-import React from "react"
-import { GameContextConsumer } from "../../GameContext/GameContext"
+import React, { useContext } from "react"
+import { GameContext } from "../../GameContext/GameContext"
 
 export default function({ id }) {
+  
+  const { players, setPlayerName } = useContext(GameContext)
+  
   return (
-    <GameContextConsumer>
-      {({ players, setPlayerName }) => <input value={players[id].name}  onChange={e => setPlayerName(id, e.target.value)} className='player__name__input'/>}
-    </GameContextConsumer>
+    <input value={players[id].name} onChange={e => setPlayerName(id, e.target.value)} className='player__name__input'/>
   )
 }
