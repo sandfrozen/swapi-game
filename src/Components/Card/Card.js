@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"
+import React, { useState, useContext, useEffect } from "react"
 import CardDetails from "./CardDetails"
 import GameButton from "../GameButton/GameButton"
 import { GameContext } from "../../GameContext/GameContext"
@@ -14,6 +14,12 @@ export default function({ id }) {
   let content = null
   let classOutside = lastWinner === id ? "card__box card__box-winner" : "card__box"
   let classInside = "card__inside card__inside-unknown"
+  
+  useEffect(() => {
+    setClicked(false)
+  }, [card])
+  
+  
   //  if player do not have card yet
   if (!card) {
     //if player dont click, show button for second player and not singleplayer
@@ -30,9 +36,8 @@ export default function({ id }) {
   } else if (!opponentIsReady) {
     content = <div className="card__question__mark">?</div>
   } else {
-    setClicked(false)
     classInside = "card__inside"
-    content = <CardDetails card={card}/>
+    content = <CardDetails card={card} />
   }
   
   
