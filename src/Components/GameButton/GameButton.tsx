@@ -1,7 +1,13 @@
 import React from "react"
 import "./GameButton.scss"
 
-export default function({ label, title, onClick }) {
+type GameButtonProps = {
+  label?: string,
+  title: string,
+  onClick: () => void
+}
+
+export default function({ label, title, onClick }: GameButtonProps) {
   return (
     <div>
       {label && <div className='game__button__label'>{label}</div>}

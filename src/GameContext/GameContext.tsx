@@ -1,6 +1,12 @@
 import React from "react"
 import getResource from "../API/swapi"
 
+type Player = {
+  name: string,
+  score: number,
+  card: {}
+}
+
 export const GameContext = React.createContext({})
 
 export class GameContextProvider extends React.Component {
@@ -22,7 +28,7 @@ export class GameContextProvider extends React.Component {
     lastWinner: -1
   }
   
-  getNewCardFor = async playerIndex => {
+  getNewCardFor = async (playerIndex: number) => {
     let { players, singleplayer, gameMode } = this.state
     
     //if singleplayer get resource for Player 2
@@ -55,7 +61,7 @@ export class GameContextProvider extends React.Component {
     }
   }
   
-  addPointFor = playerIndex => {
+  addPointFor = (playerIndex: number) => {
     let { players } = this.state
     players[playerIndex].score += 1
     this.setState({ players, lastWinner: playerIndex })
@@ -80,7 +86,7 @@ export class GameContextProvider extends React.Component {
     })
   }
   
-  setPlayerName = (playerIndex, name) => {
+  setPlayerName = (playerIndex: number, name: string) => {
     let { players } = this.state
     players[playerIndex].name = name
     this.setState({ players })
@@ -105,4 +111,16 @@ export class GameContextProvider extends React.Component {
       </GameContext.Provider>
     )
   }
+}
+
+export type GameContextTypes = {
+  players: Player[],
+  gameMode: string,
+  singleplayer: boolean,
+  lastWinner: number,
+  getNewCardFor: (playerIndex: number) => void,
+  setNewGame: () => void,
+  changeGameMode: () => void,
+  changeSingleplayer: () => void,
+  setPlayerName: (playerIndex: number, name: string) => void,
 }

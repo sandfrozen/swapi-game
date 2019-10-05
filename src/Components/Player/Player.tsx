@@ -3,7 +3,11 @@ import PlayerName from "./PlayerName"
 import PlayerScore from "./PlayerScore"
 import "./Player.scss"
 
-export default function({ id }) {
+type PlayerProps = {
+  id: number
+}
+
+export default function({ id }: PlayerProps) {
   return (
     <div className='player__box'>
       <div>

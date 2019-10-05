@@ -1,12 +1,13 @@
 import React, { useContext } from "react"
-import { GameContext } from "../../GameContext/GameContext"
+import { GameContext, GameContextTypes } from "../../GameContext/GameContext"
 import GameButton from "../GameButton/GameButton"
 import "./GameInfo.scss"
 
 export default function() {
   
-  const { players, lastWinner, setNewGame } = useContext(GameContext)
-  
+  // @ts-ignore
+  const { players, lastWinner, setNewGame }: GameContextTypes = useContext(GameContext)
+
   const cards = players[0].card && players[1].card
   const winner =
     lastWinner > -1

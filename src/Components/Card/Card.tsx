@@ -1,15 +1,22 @@
 import React, { useState, useContext, useEffect } from "react"
 import CardDetails from "./CardDetails"
 import GameButton from "../GameButton/GameButton"
-import { GameContext } from "../../GameContext/GameContext"
+import { GameContext, GameContextTypes } from "../../GameContext/GameContext"
 import "./Card.scss"
 
-export default function({ id }) {
-  
+type CardProps = {
+  id: number
+}
+
+export default function({ id }: CardProps) {
+
   const [clicked, setClicked] = useState(false)
-  const { lastWinner, singleplayer, players, getNewCardFor } = useContext(GameContext)
-  
+  // @ts-ignore
+  const { lastWinner, singleplayer, players, getNewCardFor }: GameContextTypes = useContext(GameContext)
+
+  // @ts-ignore
   const card = players[id].card
+  // @ts-ignore
   const opponentIsReady = players[id ? 0 : 1].card !== null
   let content = null
   let classOutside = lastWinner === id ? "card__box card__box-winner" : "card__box"
@@ -25,6 +32,7 @@ export default function({ id }) {
     //if player dont click, show button for second player and not singleplayer
     if (!clicked && !(id && singleplayer)) {
       content = <GameButton label='Press this button to' onClick={() => {
+        // @ts-ignore
         getNewCardFor(id)
         //for UX
         setClicked(true)
